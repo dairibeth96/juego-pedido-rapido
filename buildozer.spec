@@ -3,6 +3,13 @@ title = Pedido Rapido
 package.name = pedidorapido
 package.domain = org.tujuego
 source.include_exts = py,png,jpg,kv,atlas
+
+# (str) Source directory where the application lives
+source.dir = .
+
+# (str) Application versioning
+version = 0.1
+
 requirements = python3,pygame
 orientation = portrait
 android.permissions = INTERNET
