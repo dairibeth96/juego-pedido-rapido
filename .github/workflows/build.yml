@@ -7,17 +7,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
-          command: buildozer -v android debug
-          
+          command: build android release
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: paquete-apk
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
