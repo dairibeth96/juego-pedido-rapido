@@ -12,6 +12,7 @@ android.api = 33
 
 # (int) Minimum API your APK will support
 android.min_api = 21
+android.accept_sdk_license = True
 
 [buildozer]
 log_level = 2
