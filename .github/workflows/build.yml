@@ -26,10 +26,17 @@ jobs:
           pip install --upgrade pip
           pip install cython==0.29.36 buildozer
 
+      - name: Pre-accept Android SDK Licenses
+        run: |
+          mkdir -p ~/.android
+          echo "24333f8543b98582fcc70620800b668d9f5uv356" > ~/.android/repository.cfg
+          ANDROID_HOME=$HOME/.android
+          mkdir -p $ANDROID_HOME/licenses
+          echo -e "\n8933bac1631e8fa2101fd51e44f84183d2946c14" > $ANDROID_HOME/licenses/android-sdk-license
+          echo -e "\n24333f8543b98582fcc70620800b668d9f5uv356" >> $ANDROID_HOME/licenses/android-sdk-license
+
       - name: Build APK
         run: buildozer -v android debug
-        env:
-          ANDROID_ACCEPT_LICENSE: "True"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
